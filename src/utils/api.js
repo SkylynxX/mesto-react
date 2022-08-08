@@ -53,7 +53,7 @@ export class Api {
   }
 
   //Отправить свой like серверу (аргумент - ID карточки)
-  addLikeCard(cardID) {
+  _addLikeCard(cardID) {
     return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: "PUT",
       headers: this._headers,
@@ -61,13 +61,16 @@ export class Api {
   }
 
   //Удалить свой like на сервере аргумент - ID карточки)
-  removeLikeCard(cardID) {
+  _removeLikeCard(cardID) {
     return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._returnStatus);
   }
 
+  changeLikeCardStatus(cardID, likeFlag) {
+	return (likeFlag ? this._addLikeCard(cardID) : this._removeLikeCard(cardID));
+  }
 
   //Создать карту на сервере (аргумент - объект данных карточки)
   addCard(cardData) {

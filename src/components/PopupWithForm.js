@@ -4,7 +4,7 @@ export function PopupWithForm(props){
             <div className={`popup__container popup-${props.name}__container`}>
                 <button className={`popup__close popup-${props.name}__close`} type="button" title="Закрыть окно" aria-label="Закрыть окно" onClick={props.onClose}></button>
                 <h2 className={`popup__title popup-${props.name}__title`}>{props.title}</h2>
-                <form className={`popup__form popup-${props.name}__form`} name={`${props.name}`} >
+                <form className={`popup__form popup-${props.name}__form`} name={`${props.name}`} onSubmit={props.onSubmit}>
                     {props.children}
                     <button className={`popup__save popup-${props.name}__save`} type="submit" aria-label={`${props.buttonText}`} value={`${props.buttonText}`}>{props.buttonText}</button>
                 </form>
@@ -12,3 +12,4 @@ export function PopupWithForm(props){
         </div>
     )
 }
+export default PopupWithForm;
