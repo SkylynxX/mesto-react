@@ -14,18 +14,16 @@ export class Api {
 
   // Получить данные начальные о всех картах
   getInitialCards() {
-    return fetch( `${this._baseUrl}/cards`, {
-      headers: this._headers
-    })
-      .then(this._returnStatus);
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    }).then(this._returnStatus);
   }
 
   // Получить информацию о пользователе с сервера
   getUserInfo() {
-    return fetch( `${this._baseUrl}/users/me`, {
-      headers: this._headers
-    })
-      .then(this._returnStatus);
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    }).then(this._returnStatus);
   }
 
   // Отправить данные о пользователе на сервер (аргумент - объект с данными о пользователе)
@@ -69,7 +67,7 @@ export class Api {
   }
 
   changeLikeCardStatus(cardID, likeFlag) {
-	return (likeFlag ? this._addLikeCard(cardID) : this._removeLikeCard(cardID));
+    return likeFlag ? this._addLikeCard(cardID) : this._removeLikeCard(cardID);
   }
 
   //Создать карту на сервере (аргумент - объект данных карточки)
@@ -84,7 +82,6 @@ export class Api {
     }).then(this._returnStatus);
   }
 
-
   //Удалить карту на сервере (аргумент - ID карточки)
   removeCard(cardID) {
     return fetch(`${this._baseUrl}/cards/${cardID}`, {
@@ -96,11 +93,11 @@ export class Api {
 
 //экземпляр класса для экпорта
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-43',
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-43",
   headers: {
-    authorization: '6a502f76-29fe-462f-8f89-e95cbcfe9c07',
-    'Content-Type': 'application/json'
-  }
+    authorization: "6a502f76-29fe-462f-8f89-e95cbcfe9c07",
+    "Content-Type": "application/json",
+  },
 });
 
 export default api;
